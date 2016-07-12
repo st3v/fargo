@@ -146,6 +146,8 @@ func (e *EurekaConnection) ReregisterInstance(ins *Instance) error {
 	slug := fmt.Sprintf("%s/%s", EurekaURLSlugs["Apps"], ins.App)
 	reqURL := e.generateURL(slug)
 
+	ins.InstanceID = ins.Id()
+
 	var out []byte
 	var err error
 	if e.UseJson {
